@@ -1,8 +1,8 @@
-from utils.funcs import read_file_to_lists
+from utils.funcs import read_file_to_lists_vertical
 
 file_path = 'day01/input.txt'
 
-locids = read_file_to_lists(file_path, 2)
+locids = read_file_to_lists_vertical(file_path, 2)
 
 locids[0].sort()
 locids[1].sort()
