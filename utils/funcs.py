@@ -43,5 +43,27 @@ def read_file_to_lists_horizontal(file_path):
     
     return rows
 
+def read_file_to_string(file_path, linebreaks):
+    """
+    Reads a .txt file into a single string.
+
+    Args:
+        file_path (str): Path to the input file.
+        linebreaks (bool): Whether to include linebreaks or return single line.
+    
+    Returns:
+        str: the full content of the file
+    """
+    my_string = ""
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            if linebreaks:
+                my_string += line
+            else:
+                my_string += line[:-1]
+    
+    return my_string
+
 def check_all_negative_or_positive(lst):
     return len(set(x > 0 for x in lst)) == 1

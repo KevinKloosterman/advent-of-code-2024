@@ -9,7 +9,7 @@ def is_safe(rep):
         0 not in deltas
     )
 
-file_path = 'day02/test_input.txt'
+file_path = 'day02/input.txt'
 reports = read_file_to_lists_horizontal(file_path)
 
 safe_count = 0
