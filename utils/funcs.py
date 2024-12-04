@@ -1,28 +1,22 @@
 
-def read_file_to_lists_vertical(file_path, list_count):
+def read_file_to_lists_vertical(file_path):
     """
-    Reads a file containing space-separated ints vertically into multiple lists.
+    Reads a file containing space-separated ints vertically into multiple lists (by columns).
 
     Args:
         file_path: Path to the input file.
-        list_count: Number of lists to generate based on the file's structure.
     
     Returns:
-        A tuple of lists, each containing values from corresponding columns in the file.
+        A list of lists, each containing values from corresponding columns in the file.
     """
-    lists = [[] for _ in range(list_count)]
-
     with open(file_path, 'r') as file:
-        for line in file:
-            values = line.split()
-            
-            if len(values) != list_count:
-                raise ValueError(f"Each line in the file must contain exactly {list_count} values.")
-            
-            for i in range(list_count):
-                lists[i].append(int(values[i]))
+        rows = [list(line.strip()) for line in file]
     
-    return tuple(lists)
+    columns = list(zip(*rows))
+    
+    concatenated_columns = [''.join(col) for col in columns]
+    
+    return concatenated_columns
 
 def read_file_to_lists_horizontal(file_path):
     """
@@ -34,12 +28,8 @@ def read_file_to_lists_horizontal(file_path):
     Returns:
         A list of lists, each containing values from corresponding rows in the file.
     """
-    rows = []
-
     with open(file_path, 'r') as file:
-        for line in file:
-            row = line.split()
-            rows.append([int(i) for i in row])
+        rows = [line.strip() for line in file]
     
     return rows
 
